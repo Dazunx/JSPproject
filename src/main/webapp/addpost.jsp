@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.crud.dao.BoardDAO"%>
-
-<% request.setCharacterEncoding("utf-8"); %>
-
-<jsp:useBean id="u" class="com.crud.bean.BoardVO" />
-<jsp:setProperty property="*" name="u"/>
+<%@page import="com.music.dao.MusicDAO"%>
+<%@ page import="com.music.common.FileUpload"%>
+<%@ page import="com.music.vo.MusicVO" %>
 
 <%
-	BoardDAO boardDAO = new BoardDAO();
-	int i = boardDAO.insertBoard(u);
+	request.setCharacterEncoding("utf-8");
+	MusicDAO musicDAO = new MusicDAO();
+	FileUpload upload = new FileUpload();
+	MusicVO u = upload.uploadPhoto(request);
+
+	int i = musicDAO.insertMusic(u);
 	String msg = "데이터 추가 성공 !";
-	if(i == 0) msg = "[에러] 데이터 추가 ";
+	if(i == 0) msg = "[에러] 데이터 추가 실패";
 %>
 
 <script>

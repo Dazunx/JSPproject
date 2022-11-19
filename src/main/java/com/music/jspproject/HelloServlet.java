@@ -1,4 +1,4 @@
-package com.example.jspproject;
+package com.music.jspproject;
 
 import java.io.*;
 import javax.servlet.http.*;
